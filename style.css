@@ -1,0 +1,272 @@
+@font-face {
+    font-family: Gotham, sans-serif;
+    font-weight: normal;
+    src: url("fonts/Gotham-Book/Gotham-Book.eot");
+    src: url("fonts/Gotham-Book/Gotham-Book.otf");
+    src: url("fonts/Gotham-Book/Gotham-Book.ttf");
+    src: url("fonts/Gotham-Book/Gotham-Book.woff");
+    src: url("fonts/Gotham-Book/Gotham-Book.woff2");
+}
+
+@font-face {
+    font-family: Gotham, sans-serif;
+    font-weight: bold;
+    src: url("fonts/Gotham-Bold/Gotham-Bold.eot");
+    src: url("fonts/Gotham-Bold/Gotham-Bold.otf");
+    src: url("fonts/Gotham-Bold/Gotham-Bold.ttf");
+    src: url("fonts/Gotham-Bold/Gotham-Bold.woff");
+    src: url("fonts/Gotham-Bold/Gotham-Bold.woff2");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Gotham, sans-serif;
+}
+
+html {
+    background-color: #232728;
+}
+
+body {
+    padding-left: 398px;
+}
+
+/*МЕНЮ гамбургер-точки для мобильной версии*/
+.dots-menu {
+    display: none;
+}
+
+.slide-down-arrow {
+    display: none;
+}
+
+/*МЕНЮ на desktop*/
+.menu {
+    position: fixed;
+    width: 377px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #232728;
+    z-index: 1;
+}
+
+.top {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: #232728;
+    padding: 200px 0 0 33px;
+    border-right: solid 1px #e0b160;
+}
+
+.sub {
+    display: block;
+    width: 376px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -22px;
+    padding: 200px 0 0 33px;
+    background-color: #232728;
+    border-right: solid 1px #e0b160;
+    z-index: -1;
+    transition: left .5s ease-in;
+    -moz-transition: left .5s ease-in;
+    -ms-transition: left .5s ease-in;
+    -o-transition: left .5s ease-in;
+    -webkit-transition: left .5s ease-in;
+}
+
+li {
+    list-style-type: none;
+    background-color: inherit;
+}
+
+.top a:hover,
+.sub a:hover {
+    color: #e0b160;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: .8125rem;
+    line-height: 31px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color .5s;
+    -moz-transition: color .5s;
+    -ms-transition: color .5s;
+    -o-transition: color .5s;
+    -webkit-transition: color .5s;
+    display: block;
+    cursor: pointer;
+}
+
+.sub:after {
+    display: block;
+    content: '';
+    width: 22px;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    right: -23px;
+    background-color: #232728;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.sub>li {
+    position: relative;
+}
+
+.top>li:first-child .sub {
+    left: 0;
+}
+
+.top>li:hover .sub {
+    left: 376px;
+}
+
+.sub>li:before {
+    display: block;
+    width: 0;
+    height: 1px;
+    content: '';
+    position: absolute;
+    border: solid 0.1px #e0b160;
+    top: 15px;
+    left: -33px;
+    transition: width .5s;
+    -moz-transition: width .5s;
+    -ms-transition: width .5s;
+    -o-transition: width .5s;
+    -webkit-transition: width .5s;
+}
+
+.sub>li:hover:before {
+    width: 20px;
+}
+
+/*КОНТЕНТ на desktop*/
+.content {
+    background-color: #232728;
+}
+
+.company-member {
+    margin: .5rem 1.0625rem 1.0625rem 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.roland, .glenn {
+    background: url("images/roland.png") no-repeat;
+}
+
+.ray {
+    background: url("images/ray.png") no-repeat;
+}
+
+.face-member {
+    background-size: cover;
+    background-position: center center;
+    height: 795px;
+    position: relative;
+}
+
+.company-member:first-child .name {
+    bottom: -100px;
+}
+
+.company-member:first-child .description {
+    display: inline-block;
+}
+
+.name {
+    display: inline-block;
+    color: #e0b160;
+    font-size: 2rem;
+    line-height: 45px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding-left: 24px;
+    position: absolute;
+    bottom: 22px;
+    text-shadow: .5px .5px rgb(0,0,0,0.45);
+}
+
+.description {
+    text-align: left;
+    font-size: 1.125rem;
+    color: #fff;
+    line-height: 39px;
+    letter-spacing: .5px;
+    padding: 2.5% 0 0 46%;
+    margin-bottom: 40px;
+    display: none;
+}
+
+
+.corp-position {
+    display: inline-block;
+    font-size: .875rem;
+}
+
+.description p:first-child {
+    margin-bottom: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
