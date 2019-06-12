@@ -9,16 +9,13 @@ $(document).on('ready',function () {
 
 
     $(window).on('resize',function() {
-
         /*Анимация масштабирования контента */
         faceMember.height(faceMember.width() / k);
         animationMenu();
-
     });
 
 
     const animationMenu = () => {
-
         /*Для разрешений больше 1024px*/
         if (window.innerWidth > 1024) {
             /*Изначальная позиция мобильного меню*/
@@ -97,8 +94,6 @@ $(document).on('ready',function () {
                 $('.sub').attr('style', '');
                 $('.top').attr('style', '');
             }
-
-
             slideDownArrow.css({
                 left: '6%'
             });
@@ -166,36 +161,10 @@ $(document).on('ready',function () {
             slideDownArrow.css({
                 left: 260
             });
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     };
 
     animationMenu();
-
-
-
-
-
 
 
 /*Анимация текстовой состовляющей контента*/
@@ -227,32 +196,4 @@ $(document).on('ready',function () {
             }, 500);
         }
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });

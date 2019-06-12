@@ -75,8 +75,6 @@ body {
     border-right: solid 1px #e0b160;
     z-index: -1;
     transition: left .5s ease-in;
-    -moz-transition: left .5s ease-in;
-    -ms-transition: left .5s ease-in;
     -o-transition: left .5s ease-in;
     -webkit-transition: left .5s ease-in;
 }
@@ -99,8 +97,6 @@ a {
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: color .5s;
-    -moz-transition: color .5s;
-    -ms-transition: color .5s;
     -o-transition: color .5s;
     -webkit-transition: color .5s;
     display: block;
@@ -138,12 +134,10 @@ a {
     height: 1px;
     content: '';
     position: absolute;
-    border: solid 0.1px #e0b160;
+    border: solid .1px #e0b160;
     top: 15px;
     left: -33px;
     transition: width .5s;
-    -moz-transition: width .5s;
-    -ms-transition: width .5s;
     -o-transition: width .5s;
     -webkit-transition: width .5s;
 }

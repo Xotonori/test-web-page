@@ -1,9 +1,8 @@
 @media only screen and (max-width: 1336px) {
+
     html {
         font-size: 0.975rem;
         transition: font-size 1s;
-        -moz-transition: font-size 1s;
-        -ms-transition: font-size 1s;
         -o-transition: font-size 1s;
         -webkit-transition: font-size 1s;
     }
@@ -12,15 +11,10 @@
         padding: 120px 0 0 26px;
         font-size: 0.975rem;
         transition: padding-left 1s, font-size 1s;
-        -moz-transition: padding-left 1s, font-size 1s;
-        -ms-transition: padding-left 1s, font-size 1s;
         -o-transition: padding-left 1s, font-size 1s;
         -webkit-transition: padding-left 1s, font-size 1s;
     }
 }
-
-
-
 
 @media only screen and (max-width: 1024px) {
 
@@ -55,7 +49,6 @@
         cursor: pointer;
     }
 
-
     .slide-down-arrow-stick {
         display: inline-block;
         position: relative;
@@ -76,20 +69,15 @@
         border-left-color: #e0b160;
         border-width: 4px 0 5px 10px;
         vertical-align: middle;
-
     }
-
-
 
 /*МЕНЮ*/
     .dots-menu {
         display: inline-block;
         position: relative;
-        transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        -o-transform: rotate(90deg);
         -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
         right: 30px;
         width: 25px;
         height: 25px;
@@ -105,8 +93,6 @@
         background: linear-gradient(#E0B160 0%, #D8D8D8 50%, #E0B160 100%);
         border-radius: 50%;
         transition: transform 1s;
-        -moz-transition: transform 1s;
-        -ms-transition: transform 1s;
         -o-transition: transform 1s;
         -webkit-transition: transform 1s;
     }
@@ -116,28 +102,49 @@
     }
 
     .top {
-        all: unset;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        background-color: #232728;
+        padding: 200px 0 0 33px;
+        border-right: solid 1px #e0b160;
+    }
+
+    .top {
         position: fixed;
-        width: 350px;
+        width: 370px;
         top: 0;
         bottom: 0;
         right: -400px;
         opacity: 0;
         text-align: left;
+        -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);
         box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        -moz-box-shadow: 0 0 20px rgba(0,0,0,0.5);;
-        -o-box-shadow: 0 0 20px rgba(0,0,0,0.5);;
-        -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.5);;
         background-color: #232728;
         padding: 105px 0 0 33px;
         border-left: solid 1px #2d2d2d;
     }
 
     .sub {
-        all: unset;
         display: none;
+        width: 295px;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+        border-right: 0;
+        z-index: 1;
     }
 
+    .top>li:hover .sub {
+        left: 0;
+    }
+
+    .sub:after {
+        display: none;
+    }
 
     .sub > li > a {
         position: relative;
@@ -148,25 +155,22 @@
     .company-member {
         margin: 0 1.0625rem 1.0625rem 1.0625rem;
         transition: margin 1s;
-        -moz-transition: margin 1s;
-        -ms-transition: margin 1s;
         -o-transition: margin 1s;
         -webkit-transition: margin 1s;
     }
-
 }
-
 
 @media only screen and (max-width: 480px) {
 
     .top {
-        all: unset;
         display: none;
         position: fixed;
+        opacity: 1;
         height: 100vh;
         width: 100%;
         top: 0;
         left: 0;
+        right: 0;
         text-align: left;
         background-color: #232728;
         padding: 105px 0 0 33px;
@@ -174,9 +178,6 @@
     }
 
     .slide-down-arrow {
-
         left: 6%;
-
     }
-
 }
