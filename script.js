@@ -16,6 +16,56 @@ $(document).on('ready',function () {
 
 
     const animationMenu = () => {
+
+        /*Анимация трех точек меню*/
+        $('.dots-menu').on('mouseenter', function () {
+
+            $('.dot:nth-child(1)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out',
+                'animation':  'growing .5s 1 ease-in-out'
+            });
+
+            $('.dot:nth-child(2)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out .1s',
+                'animation':  'growing .5s 1 ease-in-out .1s'
+            });
+
+            $('.dot:nth-child(3)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out .2s',
+                'animation':  'growing .5s 1 ease-in-out .2s'
+            });
+
+            setTimeout(function () {
+                $('.dot').attr('style', '');
+            }, 700);
+
+        });
+
+        $('.dots-menu').on('mouseleave', function () {
+
+            $('.dot:nth-child(1)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out .2s',
+                'animation':  'growing .5s 1 ease-in-out .2s'
+            });
+
+            $('.dot:nth-child(2)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out .1s',
+                'animation':  'growing .5s 1 ease-in-out .1s'
+            });
+
+            $('.dot:nth-child(3)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out',
+                'animation':  'growing .5s 1 ease-in-out'
+            });
+
+
+            setTimeout(function () {
+                $('.dot').attr('style', '');
+            }, 700);
+
+        });
+
+
         /*Для разрешений больше 1024px*/
         if (window.innerWidth > 1024) {
             /*Изначальная позиция мобильного меню*/

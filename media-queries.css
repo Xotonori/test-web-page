@@ -71,7 +71,7 @@
         vertical-align: middle;
     }
 
-/*МЕНЮ*/
+    /*МЕНЮ*/
     .dots-menu {
         display: inline-block;
         position: relative;
@@ -90,11 +90,35 @@
         display: inline-block;
         width: 3px;
         height: 3px;
+        background: -webkit-gradient(linear, left top, left bottom, from(#E0B160), color-stop(50%, #D8D8D8), to(#E0B160));
+        background: -webkit-linear-gradient(#E0B160 0%, #D8D8D8 50%, #E0B160 100%);
+        background: -o-linear-gradient(#E0B160 0%, #D8D8D8 50%, #E0B160 100%);
         background: linear-gradient(#E0B160 0%, #D8D8D8 50%, #E0B160 100%);
         border-radius: 50%;
-        transition: transform 1s;
-        -o-transition: transform 1s;
-        -webkit-transition: transform 1s;
+    }
+
+    @-webkit-keyframes growing {
+        50% {
+            -webkit-transform: scale(2, 2);
+            transform: scale(2, 2)
+        }
+
+        100% {
+            -webkit-transform: scale(1, 1);
+            transform: scale(1, 1)
+        }
+    }
+
+    @keyframes growing {
+        50% {
+            -webkit-transform: scale(2, 2);
+            transform: scale(2, 2)
+        }
+
+        100% {
+            -webkit-transform: scale(1, 1);
+            transform: scale(1, 1)
+        }
     }
 
     .dot:not(:nth-child(3)) {
