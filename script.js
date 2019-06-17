@@ -1,75 +1,116 @@
-$(document).on('ready',function () {
+$(document).load('ready',function () {
 
-    /*Создаем переменные для динамичного масштабирования*/
-    const k = 1300/795;
-    let faceMember = $('.face-member');
-    let slideDownArrow = $('.slide-down-arrow');
-    let dotsMenu = $('.dots-menu');
-    faceMember.height(faceMember.width() / k);
+    const slideDownArrow = $('.slide-down-arrow');
+    const dotsMenu = $('.dots-menu');
+    const topMenu = $('.top');
+    const subMenu = $('.sub');
+
 
 
     $(window).on('resize',function() {
         /*Анимация масштабирования контента */
-        faceMember.height(faceMember.width() / k);
+        adaptiveSizeMainImages(faceMember);
         animationMenu();
     });
 
 
+    const animationDotsMenu = () => {
+
+        const removeStyleDots = () => {
+            setTimeout(function () {
+                $('.dot').attr('style', '');
+            }, 700);
+        };
+
+        dotsMenu.on('mouseenter', function () {
+
+            $('.dot:nth-child(1)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out',
+                'animation':  'growing .5s 1 ease-in-out'
+            });
+
+            $('.dot:nth-child(2)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out .1s',
+                'animation':  'growing .5s 1 ease-in-out .1s'
+            });
+
+            $('.dot:nth-child(3)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out .2s',
+                'animation':  'growing .5s 1 ease-in-out .2s'
+            });
+
+            removeStyleDots();
+
+        });
+
+        dotsMenu.on('mouseleave', function () {
+
+            $('.dot:nth-child(1)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out .2s',
+                'animation':  'growing .5s 1 ease-in-out .2s'
+            });
+
+            $('.dot:nth-child(2)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out .1s',
+                'animation':  'growing .5s 1 ease-in-out .1s'
+            });
+
+            $('.dot:nth-child(3)').css({
+                '-webkit-animation':  'growing 1s 1 ease-in-out',
+                'animation':  'growing .5s 1 ease-in-out'
+            });
+
+            removeStyleDots();
+
+        });
+    };
+
+
+    const animationArrowMobileMenu = (arrowMouseover, arrowMouseout) => {
+
+        slideDownArrow.on('mouseover', function () {
+            $(this).stop().animate({
+                left: arrowMouseover
+            }, 200)
+        });
+
+        slideDownArrow.on('mouseout', function () {
+            $(this).stop().animate({
+                left: arrowMouseout
+            }, 400)
+        });
+    };
+
+
+    const removeStylesTopAndSub = (topMenu, subMenu, classTypeOfScreen) => {
+        subMenu.removeClass(classTypeOfScreen);
+        if (!subMenu.hasClass(classTypeOfScreen)) {
+            subMenu.attr('style', '');
+            topMenu.attr('style', '');
+        }
+    };
+
+
+    const showAndHideSubMenuMobile = (classTypeOfScreen) => {
+        $('.top > li > a').on('mouseover', function () {
+            let thisSubmenu = $(this).parent().find('.' + classTypeOfScreen);
+            thisSubmenu.stop().slideDown(400);
+        });
+
+        $('.top > li').on('mouseleave', function () {
+            let thisSubmenu = $(this).find('.' + classTypeOfScreen);
+            thisSubmenu.stop().slideUp(400);
+        });
+    };
+
+
     const animationMenu = () => {
 
-        /*Анимация трех точек меню*/
-        $('.dots-menu').on('mouseenter', function () {
+        animationDotsMenu();
 
-            $('.dot:nth-child(1)').css({
-                '-webkit-animation':  'growing 1s 1 ease-in-out',
-                'animation':  'growing .5s 1 ease-in-out'
-            });
-
-            $('.dot:nth-child(2)').css({
-                '-webkit-animation':  'growing 1s 1 ease-in-out .1s',
-                'animation':  'growing .5s 1 ease-in-out .1s'
-            });
-
-            $('.dot:nth-child(3)').css({
-                '-webkit-animation':  'growing 1s 1 ease-in-out .2s',
-                'animation':  'growing .5s 1 ease-in-out .2s'
-            });
-
-            setTimeout(function () {
-                $('.dot').attr('style', '');
-            }, 700);
-
-        });
-
-        $('.dots-menu').on('mouseleave', function () {
-
-            $('.dot:nth-child(1)').css({
-                '-webkit-animation':  'growing 1s 1 ease-in-out .2s',
-                'animation':  'growing .5s 1 ease-in-out .2s'
-            });
-
-            $('.dot:nth-child(2)').css({
-                '-webkit-animation':  'growing 1s 1 ease-in-out .1s',
-                'animation':  'growing .5s 1 ease-in-out .1s'
-            });
-
-            $('.dot:nth-child(3)').css({
-                '-webkit-animation':  'growing 1s 1 ease-in-out',
-                'animation':  'growing .5s 1 ease-in-out'
-            });
-
-
-            setTimeout(function () {
-                $('.dot').attr('style', '');
-            }, 700);
-
-        });
-
-
-        /*Для разрешений больше 1024px*/
         if (window.innerWidth > 1024) {
-            /*Изначальная позиция мобильного меню*/
-            $('.top').stop().animate({
+            /*Изначальная позиция меню*/
+            topMenu.stop().animate({
                 top: 0,
                 right: 0,
                 display: 'block',
@@ -77,104 +118,58 @@ $(document).on('ready',function () {
             }, 0);
         }
 
-
-        /*Для разрешений меньше 1024px*/
         if (window.innerWidth < 1024 && window.innerWidth > 480) {
 
-            /*Изначальная позиция мобильного меню*/
-            $('.top').stop().animate({
+            /*Изначальная позиция меню*/
+            topMenu.stop().animate({
                 right: '-400px',
                 opacity: 0
             }, 0);
 
-            /*Анимация стрелки для сворачивания мобильного меню*/
-            slideDownArrow.on('mouseover', function () {
-                $(this).stop().animate({
-                    left: '270px'
-                }, 200)
-            });
-
-            slideDownArrow.on('mouseout', function () {
-                $(this).stop().animate({
-                    left: '260px'
-                }, 400)
-            });
-
-
-            /*Анимация разворачивания сворачивания мобильного меню*/
-            slideDownArrow.on('click', function () {
-                $(this).parent().stop().animate({
-                    right: '-400px',
-                    opacity: 0
-                }, 650)
-            });
-
-
-            dotsMenu.on('click', function () {
-                $(this).parent().find('.top').stop().animate({
-                    right: 0,
-                    opacity: 1
-                }, 650)
-            });
-
+            animationArrowMobileMenu('270px', '260px');
 
             /*Анимация подменю планшет*/
-            $('.sub').addClass('tablet-visible');
-            if ($('.sub').hasClass('tablet-visible')) {
+            subMenu.addClass('tablet-visible');
+            if (subMenu.hasClass('tablet-visible')) {
 
-                /*Показываем подменю*/
-                $('.top > li > a').on('mouseover', function () {
-                    let thisSubmenu = $(this).parent().find('.tablet-visible');
-                    thisSubmenu.stop().slideDown(400);
+                /*Анимация разворачивания мобильного меню*/
+                dotsMenu.on('click', function () {
+                    $(this).parent().find('.top').stop().animate({
+                        right: 0,
+                        opacity: 1
+                    }, 650)
                 });
 
-                /*Скрываем подменю*/
-                $('.top > li').on('mouseleave', function () {
-                    let thisSubmenu = $(this).find('.tablet-visible');
-                    thisSubmenu.stop().slideUp(400);
+                /*Анимация сворачивания мобильного меню*/
+                slideDownArrow.on('click', function () {
+                    $(this).parent().stop().animate({
+                        right: '-400px',
+                        opacity: 0
+                    }, 650)
                 });
+
+                showAndHideSubMenuMobile('tablet-visible');
             }
-
 
         } else {
-
-            /*Убираем артефакты при переходе на другую версию сайта*/
-            $('.sub').removeClass('tablet-visible');
-            if (!$('.sub').hasClass('tablet-visible')) {
-                $('.sub').attr('style', '');
-                $('.top').attr('style', '');
-            }
-            slideDownArrow.css({
-                left: '6%'
-            });
-
+            /*Возвращаем позиции и стили в исходное состояние при переходе на другую версию сайта*/
+            removeStylesTopAndSub(topMenu, subMenu, 'tablet-visible');
+            slideDownArrow.css({ left: '6%' });
         }
 
-
-
-        /*Для разрешений меньше 480px*/
         if (window.innerWidth < 480) {
 
-            $('.top').css({
+            /*Изначальная позиция меню*/
+            topMenu.css({
                 display: 'none',
                 opacity: 1
             });
 
+            animationArrowMobileMenu('8%', '6%');
+
             /*Анимация подменю смартфон*/
-            $('.sub').addClass('mobile-visible');
-            if ($('.sub').hasClass('mobile-visible')) {
-
-                /*Показываем подменю*/
-                $('.top > li > a').on('mouseover', function () {
-                    let thisSubmenu = $(this).parent().find('.mobile-visible');
-                    thisSubmenu.stop().slideDown(400);
-                });
-
-                /*Скрываем подменю*/
-                $('.top > li').on('mouseleave', function () {
-                    let thisSubmenu = $(this).find('.mobile-visible');
-                    thisSubmenu.stop().slideUp(400);
-                });
+            subMenu.addClass('mobile-visible');
+            if (subMenu.hasClass('mobile-visible')) {
 
                 /*Анимация разворачивания сворачивания мобильного меню*/
                 slideDownArrow.on('click', function () {
@@ -184,41 +179,35 @@ $(document).on('ready',function () {
                 dotsMenu.on('click', function () {
                     $(this).parent().find('.top').stop().fadeIn();
                 });
+
+                showAndHideSubMenuMobile('mobile-visible');
+
             }
-
-            /*Анимация стрелки для сворачивания мобильного меню*/
-                slideDownArrow.on('mouseover', function () {
-                    $(this).stop().animate({
-                        left: '8%'
-                    }, 200)
-                });
-
-                slideDownArrow.on('mouseout', function () {
-                    $(this).stop().animate({
-                        left: '6%'
-                    }, 400)
-                });
 
         } else {
-
-            /*Убираем артефакты при переходе на другую версию сайта*/
-            $('.sub').removeClass('mobile-visible');
-            if (!$('.sub').hasClass('mobile-visible')) {
-                $('.sub').attr('style', '');
-                $('.top').attr('style', '');
-            }
-
-            slideDownArrow.css({
-                left: 260
-            });
+            /*Возвращаем позиции и стили в исходное состояние при переходе на другую версию сайта*/
+            removeStylesTopAndSub(topMenu, subMenu, 'mobile-visible');
+            slideDownArrow.css({ left: 260 });
         }
     };
 
     animationMenu();
 
 
+/*Адаптивность изуальной состовляющей контента*/
+    const faceMember = $('.face-member');
+    const ratio = 1300/795;
+
+    const adaptiveSizeMainImages = (faceMember) => {
+        faceMember.height(faceMember.width() / ratio);
+    };
+
+    adaptiveSizeMainImages(faceMember);
+
+
 /*Анимация текстовой состовляющей контента*/
-    let companyMember = $('.company-member');
+    const companyMember = $('.company-member');
+
     companyMember.on('click',function () {
 
         let thisName = $(this).find('.name');
@@ -231,6 +220,7 @@ $(document).on('ready',function () {
 
             thisDescription.stop().slideDown(500);
             otherDescription.stop().slideUp(500);
+
             thisName.stop().animate({
                 bottom: '-100px'
             }, 500);
@@ -244,6 +234,7 @@ $(document).on('ready',function () {
             thisName.stop().animate({
                 bottom: '22px'
             }, 500);
+
         }
     });
 });
